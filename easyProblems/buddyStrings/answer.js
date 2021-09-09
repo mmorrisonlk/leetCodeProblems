@@ -22,6 +22,6 @@ var buddyStrings = function(s, goal) {
     console.log("false")
 };
 
-buddyStrings("aacc", "aacc");
+buddyStrings("bacc", "aaec");
 
 //Borrowed this solution because mine timed out https://leetcode.com/problems/buddy-strings/discuss/1309402/beat-95
