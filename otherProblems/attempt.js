@@ -130,4 +130,4 @@ seven
 nine
 */
 
-jumbledNumbers("oeisowufxrzohgiettr")
+jumbledNumbers("ttwwoo")
