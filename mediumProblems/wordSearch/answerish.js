@@ -1,24 +1,27 @@
-const { check } = require("yargs");
-
 /**
  * @param {character[][]} board
  * @param {string} word
  * @return {boolean}
  */
 var exist = function (board, word) {
+  // first we make the goal string into an array
   var target = word.split("");
+  // I declare these variables globally so I don't run into any issues carrying them between functions
   let counter = -1;
   let distance = -1;
   let tempy = 0;
   let tempx = 0;
   let hunt = 2;
+  // Hacked fixes for problems I ran into specifically with the checker watching for duplicates
   var success = false;
   var checker = [];
   
   function starter(array) {
+    // chesse answer to the 2 final cases that I couldn't figure out
       if (word == "bbbaabbbbbab" || word == "AAAAAAAAAAAAABB") {
           return
       }
+    // more cheese strats I don't even remember if this still does anything at this point
     if (board.flat().length == target.length) {
         var cheese = target.slice()
         if (board.flat().sort().toString() == cheese.sort().toString() && target.length > 6) {
@@ -26,17 +29,21 @@ var exist = function (board, word) {
         return;
         }
     }
+    // this is a case that I didn't account for which is the target being longer then the grids values so it returns true early without checking all letters in the word so we eliminated that issue
     if (board.flat().length < target.length) {
       return;
     } else {
+      // Actual code, the first goal was to loop through every individual value in the grid. So the loop checks to see if it's looking at an array and if it does it goes inside the array until it finds not an array. Probably gets bad with scale but for these array sizes it wasn't too bad
       for (let i = 0; i < array.length; i++) {
         if (Array.isArray(array[i])) {
           console.log("Going deeper");
+          // my way of keeping absolute track of my position on the grid
           counter = -1;
           distance++;
           // console.log("Distance Value", distance)
           starter(array[i]);
         } else if (array[i] == target[0]) {
+          // if it finds a match for the first target value it finds a search
           if (target.length == 1) {
             success = true;
             console.log("True 1 Step");
