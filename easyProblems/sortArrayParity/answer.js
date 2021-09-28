@@ -6,32 +6,30 @@
      let answer = nums.slice()
      let evensSub = []
      let oddsSub = []
+     let temp
     for (let i = 0; i < nums.length; i++ ) {
-        console.log(i, nums)
         if ((nums[i] % 2 == 0 && i % 2 == 0) || (nums[i] % 2 != 0 && i % 2 != 0)) {
-            console.log("right")
             continue
         }
         else if (nums[i] % 2 == 0 && i % 2 != 0) {
-            evensSub.push(nums[i])
             evensSub.push(i)
             if (oddsSub.length != 0) {
-                answer.splice(parseInt(evensSub.splice(evensSub.indexOf(nums[i] + 1), 1)), 1, oddsSub.shift())
-                answer.splice(oddsSub.shift(), 1, parseInt(evensSub.splice(evensSub.indexOf(i), 1)))
+                temp = nums[i] 
+                answer.splice(evensSub.pop(), 1, nums[oddsSub[0]])
+                answer.splice(oddsSub.shift(), 1, temp)
             }
         }
         else if (nums[i] % 2 != 0 && i % 2 == 0) {
-            oddsSub.push(nums[i])
             oddsSub.push(i)
             if (evensSub.length != 0) {
-                answer.splice(parseInt(oddsSub.splice(oddsSub.indexOf(nums[i] + 1), 1)), 1, evensSub.shift())
-                answer.splice(evensSub.shift(), 1, parseInt(oddsSub.splice(oddsSub.indexOf(i), 1)))
+                temp = nums[i] 
+                answer.splice(oddsSub.pop(), 1, nums[evensSub[0]])
+                answer.splice(evensSub.shift(), 1, temp)
             }
         }
         
     }
-    console.log(answer)
     return answer
 };
 
-sortArrayByParityII([3,4])
+sortArrayByParityII([4,2,5,7])
