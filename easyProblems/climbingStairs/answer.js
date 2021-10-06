@@ -13,7 +13,7 @@
     for (let i = 2; i < n; i++) {
         results[i] = 0
         for (let j = 1; j <= 2 && j <= i ; j++) {
-            console.log("i, j, magic sauce", i, j, results[i], results[i - j], results[i] += results[i - j])
+            // console.log("i, j, magic sauce", i, j, results[i], results[i - j], results[i] += results[i - j])
             results[i] += results[i - j]            
         }
     }
@@ -21,6 +21,6 @@
     return results[results.length-1]
 };
 
-// climbStairs(2)
-climbStairs(3)
+climbStairs(4)
+// climbStairs(20)
 climbStairs(5)
