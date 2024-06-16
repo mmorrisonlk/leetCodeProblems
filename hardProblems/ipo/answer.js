@@ -23,4 +23,4 @@ var findMaximizedCapital = function(k, w, profits, capital) {
         capitalArray[index] = true;
     }
     return w;
-};
+};  
